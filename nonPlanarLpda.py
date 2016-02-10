@@ -9,14 +9,17 @@ EZ-NEC ASCII File Format Description
 
 Wire definitions consist of end 1 coordinates, end 2 coordinates, and diameter. 
 If desired, the number of segments can be added as an eighth field. 
-If the segment field isn't included, the wire will be automatically segmented using the "conservative" criterion.
+If the segment field isn't included, the wire will be automatically segmented 
+using the "conservative" criterion.
 The file is case-insensitive. 
 
 Blank lines, and any text on a line following a semicolon will be ignored. 
-Blanks, tabs, or any combination can be used as delimiters (separators between fields or individual specifications). 
+Blanks, tabs, or any combination can be used as delimiters (separators between 
+fields or individual specifications). 
 Commas can be used as delimiters only if your decimal separator is not a comma. 
 Number format must correspond to your Windows regional setting. 
-That is, if you normally write one-and-one-half  ‘1,5’, then it must be written that way in this file.
+That is, if you normally write one-and-one-half  1,5 then it must be written 
+that way in this file.
 
 """
 
