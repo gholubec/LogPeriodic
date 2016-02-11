@@ -181,20 +181,43 @@ for entry in enumerate(LSD_inch) :
         D = entry[1][2]
         Dia = entry[1][3]
         
-        #Create and Store Upper Element of Element Pair
+        #{START: Create and Store Upper Element of Element Pair
+        #Create Upper Left Hand Side
         X1 = D
         Y1 = L/2.0
+        Z1 = S/2.0
+        X2 = D
+        Y2 =  0
+        Z2 = S/2.0
+        DiaClosest = selectWireInch(Dia)
+        NumSegments = NumSegments_Base
+        WireS.append((X1,Y1,Z1,X2,Y2,Z2,DiaClosest,NumSegments))
+        #Create Upper Right Hand Side
+        X1 = D
+        Y1 = 0
         Z1 = S/2.0
         X2 = D
         Y2 = -L/2.0
         Z2 = S/2.0
         DiaClosest = selectWireInch(Dia)
         NumSegments = NumSegments_Base
-        WireS.append((X1,Y1,Z1,X2,Y2,Z2,DiaClosest,NumSegments))
-        
-        #Create and Store Lower Element of Element Pair
+        WireS.append((X1,Y1,Z1,X2,Y2,Z2,DiaClosest,NumSegments))        
+        #}DONE: Create and Store Upper Element of Element Pair
+
+        #{START: Create and Store Lower Element of Element Pair
+        #Create Lower Left Hand Side
         X1 = D
         Y1 = L/2.0
+        Z1 = -S/2.0
+        X2 = D
+        Y2 = 0
+        Z2 = -S/2.0
+        DiaClosest = selectWireInch(Dia)
+        NumSegments = NumSegments_Base
+        WireS.append((X1,Y1,Z1,X2,Y2,Z2,DiaClosest,NumSegments)) 
+        #Create Lower Right Hand Side
+        X1 = D
+        Y1 = 0
         Z1 = -S/2.0
         X2 = D
         Y2 = -L/2.0
@@ -202,11 +225,15 @@ for entry in enumerate(LSD_inch) :
         DiaClosest = selectWireInch(Dia)
         NumSegments = NumSegments_Base
         WireS.append((X1,Y1,Z1,X2,Y2,Z2,DiaClosest,NumSegments))        
-
+        #}DONE: Create and Store Lower Element of Element Pair
+        
+        
 #Create the Connecting Wires
 #Top Side (z > 0) Odd to Even Connect on the Right Side, y > 0
 
 #Bottom Wires (z < 0 ) Odd to Event Connect on the Left Side, y < 0
+
+#Connect Wires Down the Middle
         
 print
 print "Wires"
@@ -216,18 +243,19 @@ for entry in WireS : print entry
 
 #{START: Publish Wire Array
 
+
 fileObj=open("LPDA.txt","w")
 iter = 0
 for entry in WireS :
     if EZ_NEC and iter == 0 : 
-        fileObj.write("in\n")
+        fileObj.write("in\r\n")
         iter += 1
         continue 
     outputString = ""
     for _entry in entry :
         outputString += str(_entry)+" "
         iter += 1
-    fileObj.write(outputString+"\n")
+    fileObj.write(outputString+"\r\n")
     
 fileObj.close()
 #}DONE: Publish Wire Array
