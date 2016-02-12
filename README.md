@@ -12,3 +12,6 @@ Source code for a non-planar log periodic antenna. This code is intended to test
 
 ##Other Information
 Testing Atom Editor Capability Here
+
+####20160212_1500UTC  
+Wing IDE project files were removed and won't be maintained as part of any forks.  
